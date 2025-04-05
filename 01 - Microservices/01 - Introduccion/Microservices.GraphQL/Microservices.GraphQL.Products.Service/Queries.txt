@@ -1,0 +1,40 @@
+﻿query{
+  categories(where:{id:{eq:2}}){
+    id,
+    name,
+    products{
+      id,
+      name
+    }
+  }
+}
+
+query{
+  products(where:{id:{eq:4}}){
+    id,
+    name,
+    category{
+      name
+    }
+  }
+}
+
+query {
+  categories(where: { id: { eq: 2 } }) {
+    id
+    name
+    products(where: { id: { eq: 4 } }) {
+      id
+      name
+      price
+    }
+  }
+}
+
+query {  
+  productById(id: 1) {
+    id
+    name
+    price
+  }
+}

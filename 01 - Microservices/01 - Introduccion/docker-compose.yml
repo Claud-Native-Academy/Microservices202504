@@ -1,0 +1,14 @@
+services:
+  microservices.graphql.mssql:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Password1234    
+    ports:
+      - 1434:1433    
+    networks:
+      - backend
+networks:
+  backend:
+    name: backend
+    driver: bridge

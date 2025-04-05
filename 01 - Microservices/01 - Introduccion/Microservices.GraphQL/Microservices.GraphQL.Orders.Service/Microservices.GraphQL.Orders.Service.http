@@ -1,0 +1,6 @@
+@Microservices.GraphQL.Orders.Service_HostAddress = http://localhost:5253
+
+GET {{Microservices.GraphQL.Orders.Service_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

@@ -1,0 +1,44 @@
+﻿query{
+    orders{
+       id,
+       productId
+       status,
+       totalPrice
+    }
+}
+
+query{
+    orders(where: {id:  {eq: 1 }}){
+        id,
+        productId,
+        quantity,
+        totalPrice,
+        status
+    }
+}
+
+mutation {
+  createOrder(productId: 2, quantity: 2) {
+    id
+    status
+    totalPrice
+  }
+}
+
+mutation {    
+  updateOrder(
+    orderId: 1,
+    productId: 1,
+    quantity: 2
+  ) {
+    id
+    productId
+    quantity
+    totalPrice
+    status
+  }
+}
+
+mutation{
+  deleteOrder(orderId: 5)
+}

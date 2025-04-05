@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.gRPC.Products.Service", "Microservices.gRPC.Products.Service\Microservices.gRPC.Products.Service.csproj", "{069ACF79-31B5-41F3-BA8C-97A0CDC158C8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.gRPC.Orders.Service", "Microservices.gRPC.Orders.Service\Microservices.gRPC.Orders.Service.csproj", "{9218F099-C886-4751-995D-9FF2F0E94888}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ng-microservices-grpc-client", "ng-microservices-grpc-client\ng-microservices-grpc-client.esproj", "{8B0E0370-3589-4474-89C1-CCF135DB56E4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{069ACF79-31B5-41F3-BA8C-97A0CDC158C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{069ACF79-31B5-41F3-BA8C-97A0CDC158C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{069ACF79-31B5-41F3-BA8C-97A0CDC158C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{069ACF79-31B5-41F3-BA8C-97A0CDC158C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9218F099-C886-4751-995D-9FF2F0E94888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9218F099-C886-4751-995D-9FF2F0E94888}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9218F099-C886-4751-995D-9FF2F0E94888}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9218F099-C886-4751-995D-9FF2F0E94888}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B0E0370-3589-4474-89C1-CCF135DB56E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B0E0370-3589-4474-89C1-CCF135DB56E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B0E0370-3589-4474-89C1-CCF135DB56E4}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{8B0E0370-3589-4474-89C1-CCF135DB56E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B0E0370-3589-4474-89C1-CCF135DB56E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B0E0370-3589-4474-89C1-CCF135DB56E4}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

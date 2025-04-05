@@ -1,0 +1,12 @@
+﻿dotnet tool install -g HotChocolate.Fusion.CommandLine
+
+dotnet run -- schema export --output schema.graphql //folder products
+dotnet run -- schema export --output schema.graphql //folder orders
+
+fusion subgraph pack //folder products
+fusion subgraph pack //folder orders
+
+//Folder Gateway
+fusion compose -p gateway.fgp \
+  -s ../Microservices.GraphQL.Orders.Service/Orders.fsp \
+  -s ../Microservices.GraphQL.Products.Service/Products.fsp

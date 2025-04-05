@@ -1,0 +1,21 @@
+<h2 class="title">List of Orders</h2>
+
+@if (loading()) {
+<p class="status">Loading orders...</p>
+} @else if (error()) {
+<p class="error">❌ {{ error() }}</p>
+} @else if (orders()?.length === 0) {
+<p class="status">Don't have orders yet</p>
+} @else {
+<section class="orders-grid">
+  @for (order of orders()!; track order.id) {
+  <div class="order-card">
+    <h3>Orden #{{ order.id }}</h3>
+    <p><strong>Product:</strong> {{ order.product?.name }}</p>
+    <p><strong>Quantity:</strong> {{ order.quantity }}</p>
+    <p><strong>Total:</strong> ${{ order.totalPrice }}</p>
+    <p><strong>Status:</strong> {{ order.status }}</p>
+  </div>
+  }
+</section>
+}

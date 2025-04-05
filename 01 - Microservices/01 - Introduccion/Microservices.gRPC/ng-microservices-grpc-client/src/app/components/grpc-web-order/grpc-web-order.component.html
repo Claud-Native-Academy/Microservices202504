@@ -1,0 +1,29 @@
+<div class="order-form-container">
+  <h2>Create Order (grpc-web)</h2>
+
+  <form (submit)="create($event)">
+    <div class="form-group">
+      <label for="productId">Product ID:</label>
+      <input id="productId" type="text" name="productId" [(ngModel)]="productId" required />
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">Quantity:</label>
+      <input id="quantity" type="number" name="quantity" [(ngModel)]="quantity" required />
+    </div>
+
+    <button type="submit">Submit Order</button>
+  </form>
+
+  <hr />
+
+  @if (result; as res) {
+  <div class="result">
+    <h3>Order Created</h3>
+    <p><strong>Order ID:</strong> {{ res.getOrderid() }}</p>
+    <p><strong>Status:</strong> {{ res.getStatus() }}</p>
+    <p><strong>Product Name:</strong> {{ res.getProductname() }}</p>
+    <p><strong>Total Price:</strong> {{ res.getTotalprice() | currency }}</p>
+  </div>
+  }
+</div>

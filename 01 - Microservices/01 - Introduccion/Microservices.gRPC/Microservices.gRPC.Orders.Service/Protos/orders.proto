@@ -1,0 +1,84 @@
+syntax = "proto3";
+
+option csharp_namespace = "Microservices.gRPC.Orders.Service.Protos";
+import "google/api/annotations.proto";
+
+package orders;
+
+service OrdersService {
+  rpc CreateOrder (CreateOrderRequest) returns (OrderResponse) {
+    option (google.api.http) = {
+      post: "/api/orders"
+      body: "*"
+    };
+  }
+
+  rpc GetOrder (GetOrderRequest) returns (OrderResponse) {
+    option (google.api.http) = {
+      get: "/api/orders/{orderId}"
+    };
+  }
+
+  rpc UpdateOrder (UpdateOrderRequest) returns (OrderResponse) {
+    option (google.api.http) = {
+      put: "/api/orders/{orderId}"
+      body: "*"
+    };
+  }
+
+  rpc DeleteOrder (DeleteOrderRequest) returns (DeleteOrderResponse) {
+    option (google.api.http) = {
+      delete: "/api/orders/{orderId}"
+    };
+  }
+
+  rpc ListOrders (EmptyRequest) returns (ListOrdersResponse) {
+    option (google.api.http) = {
+      get: "/api/orders"
+    };
+  }
+}
+
+// Create
+message CreateOrderRequest {
+  string productId = 1;
+  int32 quantity = 2;
+}
+
+// Read
+message GetOrderRequest {
+  string orderId = 1;
+}
+
+// Update
+message UpdateOrderRequest {
+  string orderId = 1;
+  string productId = 2;
+  int32 quantity = 3;
+}
+
+// Delete
+message DeleteOrderRequest {
+  string orderId = 1;
+}
+
+message DeleteOrderResponse {
+  string status = 1;
+}
+
+// List
+message EmptyRequest {  
+}
+
+message ListOrdersResponse {
+  repeated OrderResponse orders = 1;
+  int32 totalItems = 2;
+}
+
+// Response
+message OrderResponse {
+  string orderId = 1;
+  string status = 2;
+  string productName = 3;
+  double totalPrice = 4;
+}

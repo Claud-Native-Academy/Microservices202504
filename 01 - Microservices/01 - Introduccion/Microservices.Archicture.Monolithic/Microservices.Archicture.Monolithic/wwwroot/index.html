@@ -1,0 +1,180 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Monolithic Architecture</title>
+    <!-- Fuente Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-primary: #2d476d;
+            --color-background: #f7f9fb;
+            --color-surface: #ffffff;
+            --color-text: #333;
+            --color-accent: #e535ab;
+            --color-hover: #eef1f5;
+            --font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 2rem;
+            background-color: var(--color-background);
+            color: var(--color-text);
+        }
+
+        h1, h2 {
+            color: var(--color-primary);
+            margin-bottom: 1rem;
+        }
+
+        select, input[type="number"] {
+            padding: 0.5rem;
+            margin-right: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            background-color: var(--color-surface);
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            background-color: var(--color-primary);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+
+            button:hover {
+                background-color: #1e3450;
+            }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+            background-color: var(--color-surface);
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+        }
+
+        th {
+            background-color: var(--color-primary);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:nth-child(even) {
+            background-color: var(--color-hover);
+        }
+
+        tr:hover {
+            background-color: #e5eaf0;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Products</h1>
+    <ul id="product-list"></ul>
+
+    <h2>Create Order</h2>
+    <select id="product-select"></select>
+    <input type="number" id="quantity" placeholder="Cantidad" min="1" />
+    <button onclick="createOrder()">Crear Orden</button>
+
+    <h2>Orders</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody id="order-list"></tbody>
+    </table>
+
+
+    <script>
+        async function loadProducts() {
+            const res = await fetch('/api/products');
+            const products = await res.json();
+
+            const list = document.getElementById('product-list');
+            const select = document.getElementById('product-select');
+            products.forEach(p => {
+                list.innerHTML += `<li>${p.name} - $${p.price}</li>`;
+                select.innerHTML += `<option value="${p.id}">${p.name}</option>`;
+            });
+        }
+
+        async function createOrder() {
+            const productId = document.getElementById('product-select').value;
+            const quantity = document.getElementById('quantity').value;
+
+            try {
+                const response = await fetch('/api/orders', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ productId, quantity })
+                });
+
+                if (!response.ok) {
+                    const error = await response.json();
+                    let message = `Error ${response.status}: ${error.title}\n`;
+
+                    if (error.errors) {
+                        for (const key in error.errors) {
+                            const messages = error.errors[key];
+                            messages.forEach(msg => {
+                                message += `• ${msg}\n`;
+                            });
+                        }
+                    }
+
+                    throw new Error(message);
+                }
+
+
+                alert('Orden created');
+                loadOrders();
+            } catch (error) {
+                alert(`Error creating order:\n${error.message}`);
+            }
+        }
+
+
+        async function loadOrders() {
+            const res = await fetch('/api/orders');
+            const orders = await res.json();
+
+            const tbody = document.getElementById('order-list');
+            tbody.innerHTML = '';
+            orders.forEach(o => {
+                tbody.innerHTML += `
+                  <tr>
+                    <td>${o.id}</td>
+                    <td>${o.product?.name ?? 'Desconocido'}</td>
+                    <td>${o.quantity}</td>
+                    <td>$${(o.totalPrice ?? 0).toFixed(2)}</td>
+                  </tr>`;
+            });
+        }
+
+        loadProducts();
+        loadOrders();
+    </script>
+</body>
+</html>

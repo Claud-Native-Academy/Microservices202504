@@ -1,0 +1,29 @@
+<div class="order-form-container">
+  <h2>Create Order (Transcoding)</h2>
+
+  <form (submit)="create($event)">
+    <div class="form-group">
+      <label for="productId">Product ID:</label>
+      <input id="productId" type="text" name="productId" [(ngModel)]="productId" required />
+    </div>
+
+    <div class="form-group">
+      <label for="quantity">Quantity:</label>
+      <input id="quantity" type="number" name="quantity" [(ngModel)]="quantity" required />
+    </div>
+
+    <button type="submit">Submit Order</button>
+  </form>
+
+  <hr />
+
+  @if (result; as res) {
+  <div class="result">
+    <h3>Order Created</h3>
+    <p><strong>Order ID:</strong> {{ res.orderId }}</p>
+    <p><strong>Status:</strong> {{ res.status }}</p>
+    <p><strong>Product Name:</strong> {{ res.productName }}</p>
+    <p><strong>Total Price:</strong> {{ res.totalPrice | currency }}</p>
+  </div>
+  }
+</div>

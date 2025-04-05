@@ -1,0 +1,81 @@
+:root {
+  --color-primary: #2d476d;
+  --color-background: #f7f9fb;
+  --color-surface: #ffffff;
+  --color-text: #333;
+  --color-accent: #e535ab;
+  --color-hover: #eef1f5;
+  --font-family: 'Inter', sans-serif;
+}
+
+body {
+  font-family: var(--font-family);
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+app-root, app-order-ui {
+  display: block;
+  padding: 2rem;
+}
+
+h1, h2 {
+  color: var(--color-primary);
+  margin-bottom: 1rem;
+}
+
+select, input[type="number"] {
+  padding: 0.5rem;
+  margin-right: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+  background-color: var(--color-surface);
+}
+
+button {
+  padding: 0.5rem 1rem;
+  background-color: var(--color-primary);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #1e3450;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  background-color: var(--color-surface);
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+th, td {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  border: 1px solid #ccc;
+}
+
+th {
+  background-color: var(--color-primary);
+  color: white;
+  font-weight: 600;
+}
+
+tr:nth-child(even) {
+  background-color: var(--color-hover);
+}
+
+tr:hover {
+  background-color: #e5eaf0;
+}

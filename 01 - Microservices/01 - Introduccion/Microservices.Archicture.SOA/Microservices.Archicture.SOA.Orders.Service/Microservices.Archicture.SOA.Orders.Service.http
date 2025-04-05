@@ -1,0 +1,6 @@
+@Microservices.Archicture.SOA.Orders.Service_HostAddress = http://localhost:5262
+
+GET {{Microservices.Archicture.SOA.Orders.Service_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

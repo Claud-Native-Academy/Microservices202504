@@ -1,0 +1,97 @@
+﻿schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Mutation {
+  createOrder(productId: Int! quantity: Int!): Order! @cost(weight: "10")
+  updateOrder(orderId: Int! productId: Int! quantity: Int!): Order @cost(weight: "10")
+  deleteOrder(orderId: Int!): Boolean! @cost(weight: "10")
+}
+
+type Order {
+  product: Product!
+  id: Int!
+  quantity: Int!
+  status: String!
+  totalPrice: Float!
+}
+
+type Product {
+  id: Int!
+}
+
+type Query {
+  orders(where: OrderFilterInput @cost(weight: "10") order: [OrderSortInput!] @cost(weight: "10")): [Order!]! @cost(weight: "10")
+}
+
+input FloatOperationFilterInput {
+  eq: Float @cost(weight: "10")
+  neq: Float @cost(weight: "10")
+  in: [Float] @cost(weight: "10")
+  nin: [Float] @cost(weight: "10")
+  gt: Float @cost(weight: "10")
+  ngt: Float @cost(weight: "10")
+  gte: Float @cost(weight: "10")
+  ngte: Float @cost(weight: "10")
+  lt: Float @cost(weight: "10")
+  nlt: Float @cost(weight: "10")
+  lte: Float @cost(weight: "10")
+  nlte: Float @cost(weight: "10")
+}
+
+input IntOperationFilterInput {
+  eq: Int @cost(weight: "10")
+  neq: Int @cost(weight: "10")
+  in: [Int] @cost(weight: "10")
+  nin: [Int] @cost(weight: "10")
+  gt: Int @cost(weight: "10")
+  ngt: Int @cost(weight: "10")
+  gte: Int @cost(weight: "10")
+  ngte: Int @cost(weight: "10")
+  lt: Int @cost(weight: "10")
+  nlt: Int @cost(weight: "10")
+  lte: Int @cost(weight: "10")
+  nlte: Int @cost(weight: "10")
+}
+
+input OrderFilterInput {
+  and: [OrderFilterInput!]
+  or: [OrderFilterInput!]
+  id: IntOperationFilterInput
+  productId: IntOperationFilterInput
+  quantity: IntOperationFilterInput
+  status: StringOperationFilterInput
+  totalPrice: FloatOperationFilterInput
+}
+
+input OrderSortInput {
+  id: SortEnumType @cost(weight: "10")
+  productId: SortEnumType @cost(weight: "10")
+  quantity: SortEnumType @cost(weight: "10")
+  status: SortEnumType @cost(weight: "10")
+  totalPrice: SortEnumType @cost(weight: "10")
+}
+
+input StringOperationFilterInput {
+  and: [StringOperationFilterInput!]
+  or: [StringOperationFilterInput!]
+  eq: String @cost(weight: "10")
+  neq: String @cost(weight: "10")
+  contains: String @cost(weight: "20")
+  ncontains: String @cost(weight: "20")
+  in: [String] @cost(weight: "10")
+  nin: [String] @cost(weight: "10")
+  startsWith: String @cost(weight: "20")
+  nstartsWith: String @cost(weight: "20")
+  endsWith: String @cost(weight: "20")
+  nendsWith: String @cost(weight: "20")
+}
+
+enum SortEnumType {
+  ASC
+  DESC
+}
+
+"The purpose of the `cost` directive is to define a `weight` for GraphQL types, fields, and arguments. Static analysis can use these weights when calculating the overall cost of a query or response."
+directive @cost("The `weight` argument defines what value to add to the overall cost for every appearance, or possible appearance, of a type, field, argument, etc." weight: String!) on SCALAR | OBJECT | FIELD_DEFINITION | ARGUMENT_DEFINITION | ENUM | INPUT_FIELD_DEFINITION

@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.12.35506.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.Archicture.SOA.Products.Service", "Microservices.Archicture.SOA.Products.Service\Microservices.Archicture.SOA.Products.Service.csproj", "{8E3CE7BA-7F4F-4420-A30B-F5A7FAD30535}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microservices.Archicture.SOA.Orders.Service", "Microservices.Archicture.SOA.Orders.Service\Microservices.Archicture.SOA.Orders.Service.csproj", "{0055906C-73F6-4D4D-B1AE-D1D24D6CBBC8}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ng-microservices-architecture-soa-client", "ng-microservices-archicture-soa-client\ng-microservices-architecture-soa-client.esproj", "{5C55833A-2E24-4794-A1A5-1BDA02976D83}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E3CE7BA-7F4F-4420-A30B-F5A7FAD30535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E3CE7BA-7F4F-4420-A30B-F5A7FAD30535}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E3CE7BA-7F4F-4420-A30B-F5A7FAD30535}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E3CE7BA-7F4F-4420-A30B-F5A7FAD30535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0055906C-73F6-4D4D-B1AE-D1D24D6CBBC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0055906C-73F6-4D4D-B1AE-D1D24D6CBBC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0055906C-73F6-4D4D-B1AE-D1D24D6CBBC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0055906C-73F6-4D4D-B1AE-D1D24D6CBBC8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C55833A-2E24-4794-A1A5-1BDA02976D83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C55833A-2E24-4794-A1A5-1BDA02976D83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C55833A-2E24-4794-A1A5-1BDA02976D83}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{5C55833A-2E24-4794-A1A5-1BDA02976D83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C55833A-2E24-4794-A1A5-1BDA02976D83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C55833A-2E24-4794-A1A5-1BDA02976D83}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

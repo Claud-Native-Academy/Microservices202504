@@ -1,0 +1,42 @@
+.title {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-primary);
+}
+
+.status {
+  color: #555;
+  font-style: italic;
+}
+
+.error {
+  color: crimson;
+  font-weight: bold;
+}
+
+table {  
+  width: 100%;
+  border-collapse: collapse;
+  border: 1px solid #ddd;
+  background-color: var(--color-surface);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+thead {
+  background-color: var(--color-primary);
+  color: white;
+}
+
+th, td {
+  padding: 1rem;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+tbody tr:hover {
+  background-color: #f0f4f8;
+  transition: background-color 0.2s ease-in-out;
+}
+

@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option csharp_namespace = "Microservices.gRPC.Products.Service.Protos";
+
+package products;
+
+service ProductsService {
+  rpc GetProduct (ProductRequest) returns (ProductResponse);
+}
+
+message ProductRequest {
+  string productId = 1;
+}
+
+message ProductResponse {
+  string productId = 1;
+  string name = 2;
+  int32 stock = 3;
+  double price = 4;
+}

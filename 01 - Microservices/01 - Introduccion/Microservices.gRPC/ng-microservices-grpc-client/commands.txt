@@ -1,0 +1,21 @@
+https://github.com/protocolbuffers/protobuf/releases/download/v30.2/protoc-30.2-win64.zip
+C:\protoc\bin
+https://github.com/grpc/grpc-web/releases/download/1.5.0/protoc-gen-grpc-web-1.5.0-windows-x86_64.exe
+C:\grpc-web\  protoc-gen-grpc-web 
+
+protoc \
+  -I=src/protos \
+  src/protos/orders.proto \
+  src/protos/google/api/annotations.proto \
+  src/protos/google/api/http.proto \
+  --js_out=import_style=commonjs,binary:src/generated \
+  --grpc-web_out=import_style=typescript,mode=grpcwebtext:src/generated
+
+Replace in orders_pb.js
+var jspb = require('google-protobuf');
+TO
+import * as jspb from 'google-protobuf'
+
+Remove dependency
+//var google_api_annotations_pb = require('./google/api/annotations_pb.js');
+//goog.object.extend(proto, google_api_annotations_pb);

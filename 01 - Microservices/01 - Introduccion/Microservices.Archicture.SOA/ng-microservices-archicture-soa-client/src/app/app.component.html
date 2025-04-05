@@ -1,0 +1,45 @@
+<div class="container">
+  <h1>Products</h1>
+  <ul>
+    @for (product of products; track product.id){
+    <li>{{ product.name }} - ${{ product.price }}</li>
+    }
+  </ul>
+
+  <h2>Create Order</h2>
+  <form (submit)="createOrder($event)">
+    <select [formControl]="productControl">
+      @for (product of products; track product.id){
+      <option [value]="product.id">{{ product.name }}</option>
+      }
+    </select>
+    <input type="number" min="1" placeholder="Cantidad" [formControl]="quantityControl" />
+    <button type="submit">Crear Orden</button>
+  </form>
+
+  @if(error){
+  <div class="error">{{ error }}</div>
+  }
+  <h2>Orders</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Total</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (order of orders; track order.id){
+      <tr>
+        <td>{{ order.id }}</td>
+        <td>{{ order.productName }}</td>
+        <td>{{ order.quantity }}</td>
+        <td>{{ order.totalPrice }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+<router-outlet />

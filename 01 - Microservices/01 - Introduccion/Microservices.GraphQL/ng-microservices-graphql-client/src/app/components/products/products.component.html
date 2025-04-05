@@ -1,0 +1,30 @@
+<h2 class="title">List of Products</h2>
+
+@if (loading()) {
+<p class="status">Loading products...</p>
+} @else if (error()) {
+<p class="error">❌ {{ error() }}</p>
+} @else if (products()?.length === 0) {
+<p class="status">Don't have products yet</p>
+} @else {
+<table class="product-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Category</th>
+    </tr>
+  </thead>
+  <tbody>
+    @for (product of products()!; track product.id) {
+    <tr>
+      <td>{{ product.id }}</td>
+      <td>{{ product.name }}</td>
+      <td>${{ product.price }}</td>
+      <td>{{ product.category?.name ?? 'without category' }}</td>
+    </tr>
+    }
+  </tbody>
+</table>
+}
